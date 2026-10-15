@@ -87,6 +87,9 @@ const ICONS = {
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
   moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
   shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>',
+  chevronD: '<path d="m6 9 6 6 6-6"/>',
+  panel: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18M15 9l-3 3 3 3"/>',
+  arrowUp: '<path d="M7 17 17 7M8 7h9v9"/>', arrowDown: '<path d="M7 7l10 10M17 8v9H8"/>',
   key: '<circle cx="8" cy="15" r="4"/><path d="m10.85 12.15 8.15-8.15M18 5l2 2M15 8l2 2"/>',
 };
 export function icon(name, cls = '') {

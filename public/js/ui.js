@@ -105,3 +105,18 @@ export function rowActionButtons(isAdmin) {
     ${isAdmin ? `<button class="btn btn-ghost btn-icon btn-sm" data-del title="Delete" style="color:var(--red)">${icon('trash')}</button>` : ''}
   </div>`;
 }
+
+// Count-up for KPI figures ("AED 12,345.00", "42", …) — formatting is preserved exactly.
+export function countUp(el, dur = 900) {
+  const final = el.textContent; const m = final.match(/-?[\d,]+(\.\d+)?/);
+  if (!m || el.dataset.counted) return; el.dataset.counted = '1';
+  const target = parseFloat(m[0].replace(/,/g, '')); if (!isFinite(target) || target === 0) return;
+  const dec = m[1] ? m[1].length - 1 : 0; const pre = final.slice(0, m.index), post = final.slice(m.index + m[0].length);
+  const t0 = performance.now(); const ease = (x) => 1 - Math.pow(1 - x, 4);
+  const step = (t) => {
+    const p = Math.min(1, (t - t0) / dur);
+    el.textContent = p >= 1 ? final : pre + (target * ease(p)).toLocaleString('en-AE', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + post;
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
